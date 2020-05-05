@@ -1,0 +1,4 @@
+<div [ngClass]="{'is-admin': user.isAdmin}">
+    {{user | json}}
+    <button (click)="user.toggleAdmin()">toggle admin</button>
+</div>
