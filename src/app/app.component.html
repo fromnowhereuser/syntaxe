@@ -14,7 +14,7 @@
 
 
 <div *ngFor="let user of users">
-    <app-user [user]="user"></app-user>
+    <app-user (delete)="deleteUser($event)" [user]="user"></app-user>
 </div>
 
 <div [ngClass]="{'many-users': users.length >= 2}" [ngSwitch]="users.length">

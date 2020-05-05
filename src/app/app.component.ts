@@ -33,9 +33,13 @@ export class AppComponent implements OnInit {
     console.log(user);
   }
 
+  deleteUser(todel: User) {
+    this.users.splice(this.users.indexOf(todel), 1);
+  }
+
   addUser(firstname: string, lastname: string) {
     //const user = {} as User;
-    const user = new User('','');
+    const user = new User('', '');
 
     user.firstname = firstname;
     user.lastname = lastname;
