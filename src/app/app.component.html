@@ -1,4 +1,4 @@
-<h1 [color]="'yellow'" appDoNothing>welcome to {{title?.caption}}</h1>
+<h1 >welcome to {{title?.caption}}</h1>
 
 <div>
     <!-- <div *ngIf="choice === 9">
@@ -18,7 +18,7 @@
     <button (click)="filterbyName(filterName.value)">filter</button>
     <div *ngFor="let user of userService.getUsers() | userFilter:filterName.value">
         <!-- <div> {{user | user:'param1':'param2'}}</div> -->
-        <app-user (delete)="userService.deleteUser($event)" [user]="user"></app-user>
+        <app-user style="font-size: 10px;" appZoom (delete)="userService.deleteUser($event)" [user]="user"></app-user>
     </div>
     <hr>
 
