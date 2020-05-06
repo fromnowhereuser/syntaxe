@@ -42,4 +42,9 @@ export class AppComponent implements OnInit {
 
   }
 
+
+  public filterByName(name: any) {
+
+  }
+
 }

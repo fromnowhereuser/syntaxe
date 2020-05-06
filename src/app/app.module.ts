@@ -9,6 +9,7 @@ import { ApiService } from './services/api.service';
 import { GenericUserService } from './services/generic-user-service';
 import { UserPipe } from './pipes/user.pipe';
 import { DoNothingDirective } from './directives/do-nothing.directive';
+import { UserFilterPipe } from './pipes/user-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { DoNothingDirective } from './directives/do-nothing.directive';
     FirstComponentComponent,
     UserComponent,
     UserPipe,
+    UserFilterPipe,
     DoNothingDirective
   ],
   imports: [

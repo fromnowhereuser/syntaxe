@@ -13,10 +13,14 @@
 
     <div>{{userService.getUsers() | slice:0:2 |json}}</div>
 
-    <div *ngFor="let user of userService.getUsers()">
+    <hr>
+    <div>filter by name: <input type="text" #filterName></div>
+    <button (click)="filterbyName(filterName.value)">filter</button>
+    <div *ngFor="let user of userService.getUsers() | userFilter:filterName.value">
         <!-- <div> {{user | user:'param1':'param2'}}</div> -->
         <app-user (delete)="userService.deleteUser($event)" [user]="user"></app-user>
     </div>
+    <hr>
 
     <div [ngClass]="{'many-users': userService.getUsers().length >= 2}" [ngSwitch]="userService.getUsers().length">
         <div *ngSwitchCase="0">you dont have any user yet</div>
