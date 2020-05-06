@@ -1,16 +1,16 @@
 <form (ngSubmit)="valid()" [formGroup]="userForm">
     <div class="form-group">
-        <label>firstname</label><input  name="firstname" type="text" formControlName="firstname"
-            required />
+        <label>firstname</label><input name="firstname" type="text" formControlName="firstname" />
+        <div *ngIf="firstnameCtrl.dirty && firstnameCtrl.hasError('required')">Username is required</div>
+        <!-- <div *ngIf="userForm.get('username').dirty && firstnameCtrl.hasError('required')">Username is required</div> -->
     </div>
 
     <div class="form-group">
-        <label>lastname</label><input  name="lastname" type="text" formControlName="lastname"
-            required />
+        <label>lastname</label><input name="lastname" type="text" formControlName="lastname" />
     </div>
 
     <div>
-        <button type="submit">
+        <button [disabled]="userForm.invalid" type="submit">
             valid
         </button>
     </div>

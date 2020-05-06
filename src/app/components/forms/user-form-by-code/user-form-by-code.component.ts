@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-form-by-code',
@@ -9,7 +9,7 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 export class UserFormByCodeComponent implements OnInit {
 
   userForm: FormGroup;
-  
+
   firstnameCtrl: FormControl;
   lastnameCtrl: FormControl;
 
@@ -17,7 +17,12 @@ export class UserFormByCodeComponent implements OnInit {
     fb: FormBuilder
   ) {
 
-    this.firstnameCtrl = fb.control('');
+    this.firstnameCtrl = fb.control('', [
+      Validators.required,
+      Validators.minLength(2),
+      Validators.maxLength(10),
+    ]);
+
     this.lastnameCtrl = fb.control('');
 
     this.userForm = fb.group({
@@ -30,6 +35,7 @@ export class UserFormByCodeComponent implements OnInit {
   }
 
   valid() {
+    console.log(this.userForm.valid);
     console.log(this.userForm.value);
   }
 
