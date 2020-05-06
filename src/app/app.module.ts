@@ -10,6 +10,7 @@ import { GenericUserService } from './services/generic-user-service';
 import { UserPipe } from './pipes/user.pipe';
 import { DoNothingDirective } from './directives/do-nothing.directive';
 import { UserFilterPipe } from './pipes/user-filter.pipe';
+import { ZoomDirective } from './directives/zoom.directive';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UserFilterPipe } from './pipes/user-filter.pipe';
     UserComponent,
     UserPipe,
     UserFilterPipe,
-    DoNothingDirective
+    DoNothingDirective,
+    ZoomDirective
   ],
   imports: [
     BrowserModule
