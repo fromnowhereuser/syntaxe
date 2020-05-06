@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './models/user';
+import { UserService } from './services/user.service';
+import { GenericUserService } from './services/generic-user-service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,10 +11,11 @@ export class AppComponent implements OnInit {
   public title = undefined;
 
   public choice = 10;
+  date = new Date();
 
-  public users = new Array<User>();
-
-  constructor() {
+  constructor(
+    public userService: GenericUserService
+  ) {
   }
 
   ngOnInit(): void {
@@ -20,8 +23,8 @@ export class AppComponent implements OnInit {
       this.title = { caption: 'syntaxe' };
     }, 1000);
 
-    this.users.push(new User('john', 'doe'));
-    this.users.push(new User('kayzer', 'soze'));
+    this.userService.addUser('john', 'doe');
+    this.userService.addUser('kayzer', 'soze');
   }
 
 
@@ -33,18 +36,10 @@ export class AppComponent implements OnInit {
     console.log(user);
   }
 
-  deleteUser(todel: User) {
-    this.users.splice(this.users.indexOf(todel), 1);
-  }
 
-  addUser(firstname: string, lastname: string) {
-    //const user = {} as User;
-    const user = new User('', '');
+  onMouseMove(event: MouseEvent) {
+    console.log(event);
 
-    user.firstname = firstname;
-    user.lastname = lastname;
-
-    this.users.push(user);
   }
 
 }

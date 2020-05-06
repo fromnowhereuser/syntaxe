@@ -4,17 +4,31 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FirstComponentComponent } from './components/first-component/first-component.component';
 import { UserComponent } from './components/user/user.component';
+import { UserService } from './services/user.service';
+import { ApiService } from './services/api.service';
+import { GenericUserService } from './services/generic-user-service';
+import { UserPipe } from './pipes/user.pipe';
+import { DoNothingDirective } from './directives/do-nothing.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     FirstComponentComponent,
-    UserComponent
+    UserComponent,
+    UserPipe,
+    DoNothingDirective
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    ApiService,
+    {
+      provide: GenericUserService,
+      useClass: UserService
+    }
+
+  ],
   bootstrap: [
     AppComponent
   ]

@@ -1,26 +1,28 @@
-<h1 [ngStyle]="{color:'red'}">welcome to {{title?.caption}}</h1>
-<h1 (click)="title.caption = 'modified'" [style.background]="'red'" [textContent]="title?.caption"></h1>
+<h1 appDoNothing>welcome to {{title?.caption}}</h1>
 
-<!-- <div *ngIf="choice === 9">
+<div>
+    <!-- <div *ngIf="choice === 9">
     <app-first-component></app-first-component>
 </div> -->
+    <input type="text" #myInput>
+    <button (click)="showUser(myInput.value)">show</button>
 
-<input type="text" #myInput>
-<button (click)="showUser(myInput.value)">show</button>
+    <div>firstname<input type="text" #firstname></div>
+    <div>lastname<input type="text" #lastname></div>
+    <button (click)="userService.addUser(firstname.value, lastname.value)">add</button>
 
-<div>firstname<input type="text" #firstname></div>
-<div>lastname<input type="text" #lastname></div>
-<button (click)="addUser(firstname.value, lastname.value)">add</button>
+    <div>{{userService.getUsers() | slice:0:2 |json}}</div>
 
+    <div *ngFor="let user of userService.getUsers()">
+        <!-- <div> {{user | user:'param1':'param2'}}</div> -->
+        <app-user (delete)="userService.deleteUser($event)" [user]="user"></app-user>
+    </div>
 
-<div *ngFor="let user of users">
-    <app-user (delete)="deleteUser($event)" [user]="user"></app-user>
+    <div [ngClass]="{'many-users': userService.getUsers().length >= 2}" [ngSwitch]="userService.getUsers().length">
+        <div *ngSwitchCase="0">you dont have any user yet</div>
+        <div *ngSwitchCase="1">you have only one user</div>
+        <div *ngSwitchDefault>you have lot of users</div>
+    </div>
+
+    <button (click)="onClick()">click me</button>
 </div>
-
-<div [ngClass]="{'many-users': users.length >= 2}" [ngSwitch]="users.length">
-    <div *ngSwitchCase="0">you dont have any user yet</div>
-    <div *ngSwitchCase="1">you have only one user</div>
-    <div *ngSwitchDefault>you have lot of users</div>
-</div>
-
-<button (click)="onClick()">click me</button>

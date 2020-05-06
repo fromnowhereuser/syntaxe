@@ -1,10 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation, ElementRef } from '@angular/core';
 import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  styleUrls: ['./user.component.scss'],
 })
 export class UserComponent implements OnInit {
 
@@ -13,11 +13,16 @@ export class UserComponent implements OnInit {
   user: User;
 
   @Output('delete')
-  delete = new EventEmitter<User>();
+  delete = new EventEmitter<User>()
 
-  constructor() { }
+  constructor(
+    private ref: ElementRef
+  ) { }
 
   ngOnInit() {
+    (this.ref.nativeElement as HTMLDivElement).addEventListener('click', () => {
+      console.log('event');
+    });
   }
 
 }
