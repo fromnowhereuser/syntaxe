@@ -7,7 +7,7 @@
 
     <hr>
     <div>filter by name: <input type="text" #filterName></div>
-    <button (click)="filterbyName(filterName.value)">filter</button>
+    <button (click)="filterByName(filterName.value)">filter</button>
     <div *ngFor="let user of userService.getUsers() | userFilter:filterName.value">
         <app-user style="font-size: 10px;" (delete)="userService.deleteUser($event)" [user]="user"></app-user>
     </div>
