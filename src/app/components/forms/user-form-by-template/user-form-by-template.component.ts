@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { User } from 'src/app/models/user';
+import {plainToClass} from "class-transformer";
 
 @Component({
   selector: 'app-user-form-by-template',
@@ -8,7 +9,10 @@ import { User } from 'src/app/models/user';
 })
 export class UserFormByTemplateComponent implements OnInit {
 
-  user = new User('','');
+  @Output('newuser')
+  newuser = new EventEmitter<User>();
+
+  user = new User('', '');
 
   constructor() { }
 
@@ -16,7 +20,10 @@ export class UserFormByTemplateComponent implements OnInit {
   }
 
   valid(data: any) {
-    console.log(data);
+    const nuser = new User('', '');
+    Object.assign(nuser, this.user);
+    this.newuser.emit(nuser);
+
   }
 
 }

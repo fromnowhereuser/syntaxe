@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { User } from './models/user';
 import { UserService } from './services/user.service';
 import { GenericUserService } from './services/generic-user-service';
+import { JsonplaceholderService } from './services/jsonplaceholder.service';
+import { of, from, Observable } from 'rxjs';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,41 +14,20 @@ import { GenericUserService } from './services/generic-user-service';
 export class AppComponent implements OnInit {
   public title = undefined;
 
-  public choice = 10;
-  date = new Date();
 
   constructor(
-    public userService: GenericUserService,
   ) {
+    // of([1, 2, 3]).subscribe(x => console.log(x));
+    // from([1, 2, 3]).subscribe(x => console.log(x));
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.title = { caption: 'syntaxe' };
-    }, 1000);
-
-    this.userService.addUser('john', 'doe');
-    this.userService.addUser('kayzer', 'soze');
-  }
 
 
-  public onClick(): void {
-    console.log('clicked');
-  }
-
-  showUser(user: any) {
-    console.log(user);
-  }
-
-
-  onMouseMove(event: MouseEvent) {
-    console.log(event);
 
   }
 
 
-  public filterByName(name: any) {
 
-  }
 
 }

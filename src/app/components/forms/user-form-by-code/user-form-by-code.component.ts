@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { User } from 'src/app/models/user';
+import { plainToClass } from 'class-transformer';
 
 @Component({
   selector: 'app-user-form-by-code',
@@ -7,6 +9,10 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
   styleUrls: ['./user-form-by-code.component.scss']
 })
 export class UserFormByCodeComponent implements OnInit {
+
+
+  @Output('newuser')
+  newuser = new EventEmitter<User>();
 
   userForm: FormGroup;
 
@@ -35,8 +41,10 @@ export class UserFormByCodeComponent implements OnInit {
   }
 
   valid() {
-    console.log(this.userForm.valid);
-    console.log(this.userForm.value);
+    const nuser = plainToClass(User, this.userForm.value);
+    this.newuser.emit(nuser);
   }
 
 }
+
+// http://91.121.148.187:3002/messenger

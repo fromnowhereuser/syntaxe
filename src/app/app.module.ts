@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { FirstComponentComponent } from './components/first-component/first-component.component';
 import { UserComponent } from './components/user/user.component';
 import { UserService } from './services/user.service';
-import { ApiService } from './services/api.service';
 import { GenericUserService } from './services/generic-user-service';
 import { UserPipe } from './pipes/user.pipe';
 import { DoNothingDirective } from './directives/do-nothing.directive';
@@ -15,6 +15,12 @@ import { ZoomDirective } from './directives/zoom.directive';
 import { AppConfig, CONFIG1 } from './app.config';
 import { UserFormByCodeComponent } from './components/forms/user-form-by-code/user-form-by-code.component';
 import { UserFormByTemplateComponent } from './components/forms/user-form-by-template/user-form-by-template.component';
+import { ApiConfiguration } from './services/generated/api/api-configuration';
+import { ApiService } from './services/generated/api/services';
+import { LandingComponent } from './components/landing/landing.component';
+import { ErrorComponent } from './components/error/error.component';
+import { UsersComponent } from './components/users/users.component';
+import { RoutingModule } from './routing/routing.module';
 
 @NgModule({
   declarations: [
@@ -26,15 +32,19 @@ import { UserFormByTemplateComponent } from './components/forms/user-form-by-tem
     DoNothingDirective,
     ZoomDirective,
     UserFormByCodeComponent,
-    UserFormByTemplateComponent
+    UserFormByTemplateComponent,
+    LandingComponent,
+    ErrorComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
+    RoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [
-    ApiService,
     // {
     //   provide: GenericUserService,
     //   useClass: UserService
@@ -47,14 +57,18 @@ import { UserFormByTemplateComponent } from './components/forms/user-form-by-tem
       provide: GenericUserService,
       deps: [
         AppConfig,
-        ApiService
+        HttpClient,
+        ApiService,
+        ApiConfiguration
       ],
       useFactory: (
         appConfig: AppConfig,
+        http: HttpClient,
+        apiConf: ApiConfiguration,
         api: ApiService
       ) => {
         if (appConfig.mode === 1) {
-          return new UserService(api);
+          return new UserService(appConfig, http, apiConf, api);
         }
       }
     },

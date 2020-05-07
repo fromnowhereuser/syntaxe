@@ -1,38 +1,7 @@
-<h1 >welcome to {{title?.caption}}</h1>
-
-<div>
-    <!-- <div *ngIf="choice === 9">
-    <app-first-component></app-first-component>
-</div> -->
-    <input type="text" #myInput>
-    <button (click)="showUser(myInput.value)">show</button>
-
-    <div>firstname<input type="text" #firstname></div>
-    <div>lastname<input type="text" #lastname></div>
-    <button (click)="userService.addUser(firstname.value, lastname.value)">add</button>
-
-    <div>{{userService.getUsers() | slice:0:2 |json}}</div>
-
-    <hr>
-    <div>filter by name: <input type="text" #filterName></div>
-    <button (click)="filterbyName(filterName.value)">filter</button>
-    <div *ngFor="let user of userService.getUsers() | userFilter:filterName.value">
-        <!-- <div> {{user | user:'param1':'param2'}}</div> -->
-        <app-user style="font-size: 10px;" appZoom (delete)="userService.deleteUser($event)" [user]="user"></app-user>
-    </div>
-    <hr>
-
-    <div [ngClass]="{'many-users': userService.getUsers().length >= 2}" [ngSwitch]="userService.getUsers().length">
-        <div *ngSwitchCase="0">you dont have any user yet</div>
-        <div *ngSwitchCase="1">you have only one user</div>
-        <div *ngSwitchDefault>you have lot of users</div>
-    </div>
-
-    <button (click)="onClick()">click me</button>
-
-
-
-    <hr>
-    <app-user-form-by-code></app-user-form-by-code>
-    <app-user-form-by-template></app-user-form-by-template>
-</div>
+<header>Welcome blabla</header>
+<hr>
+<main>
+    <router-outlet></router-outlet>
+</main>
+<hr>
+<footer>Copyright </footer>

@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "gen": "ng-openapi-gen --input http://91.121.148.187:3002/api-json --output ./src/app/services/generated/api"
   },
   "private": true,
   "dependencies": {
@@ -19,7 +20,9 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "class-transformer": "^0.2.3",
     "rxjs": "~6.4.0",
+    "rxjs-compat": "^6.5.5",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },

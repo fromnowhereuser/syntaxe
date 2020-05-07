@@ -5,7 +5,7 @@ export class AppConfig {
 }
 
 export const CONFIG1: AppConfig = {
-    apiEndpoint: 'http://my-api.com',
+    apiEndpoint: 'http://91.121.148.187:3002/users',
     title: 'main api',
     mode: 1
 }

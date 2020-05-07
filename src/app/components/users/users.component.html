@@ -1,0 +1,31 @@
+<div>
+
+    <hr>
+    <app-user-form-by-code (newuser)="userService.addUser($event)"></app-user-form-by-code>
+    <app-user-form-by-template (newuser)="userService.addUser($event)"></app-user-form-by-template>
+    <hr>
+
+    <hr>
+    <div>filter by name: <input type="text" #filterName></div>
+    <button (click)="filterbyName(filterName.value)">filter</button>
+    <div *ngFor="let user of userService.getUsers() | userFilter:filterName.value">
+        <app-user style="font-size: 10px;" (delete)="userService.deleteUser($event)" [user]="user"></app-user>
+    </div>
+
+    <div *ngFor="let user of usersAsync | async ">
+        <app-user style="font-size: 10px;" (delete)="userService.deleteUser($event)" [user]="user"></app-user>
+    </div>
+    <hr>
+
+    <div [ngClass]="{'many-users': userService.getUsers().length >= 2}" [ngSwitch]="userService.getUsers().length">
+        <div *ngSwitchCase="0">you dont have any user yet</div>
+        <div *ngSwitchCase="1">you have only one user</div>
+        <div *ngSwitchDefault>you have lot of users</div>
+    </div>
+
+    <button (click)="onClick()">click me</button>
+
+
+
+    <hr>
+</div>
