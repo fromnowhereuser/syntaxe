@@ -21,6 +21,10 @@ import { LandingComponent } from './components/landing/landing.component';
 import { ErrorComponent } from './components/error/error.component';
 import { UsersComponent } from './components/users/users.component';
 import { RoutingModule } from './routing/routing.module';
+import { NavComponent } from './components/nav/nav.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { AuthDirective } from './services/auth.directive';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,11 @@ import { RoutingModule } from './routing/routing.module';
     UserFormByTemplateComponent,
     LandingComponent,
     ErrorComponent,
-    UsersComponent
+    UsersComponent,
+    NavComponent,
+    AuthComponent,
+    AuthDirective,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

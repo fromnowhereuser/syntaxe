@@ -8,13 +8,19 @@
     <hr>
     <div>filter by name: <input type="text" #filterName></div>
     <button (click)="filterByName(filterName.value)">filter</button>
-    <div *ngFor="let user of userService.getUsers() | userFilter:filterName.value">
+    <!-- <div *ngFor="let user of userService.getUsers() | userFilter:filterName.value">
         <app-user style="font-size: 10px;" (delete)="userService.deleteUser($event)" [user]="user"></app-user>
-    </div>
-
+    </div> -->
+    <h2>async pipe</h2>
     <div *ngFor="let user of usersAsync | async ">
-        <app-user style="font-size: 10px;" (delete)="userService.deleteUser($event)" [user]="user"></app-user>
+        <app-user style="font-size: 15px;" (delete)="userService.deleteUser($event)" [user]="user"></app-user>
     </div>
+    <h2>by resolve</h2>
+    <div *ngFor="let user of usersByResolve ">
+        <app-user style="font-size: 15px;" (delete)="userService.deleteUser($event)" [user]="user"></app-user>
+    </div>
+    <hr>
+        <router-outlet></router-outlet>
     <hr>
 
     <div [ngClass]="{'many-users': userService.getUsers().length >= 2}" [ngSwitch]="userService.getUsers().length">

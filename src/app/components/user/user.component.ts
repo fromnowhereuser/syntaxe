@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation, ElementRef } from '@angular/core';
 import { User } from 'src/app/models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -16,13 +17,16 @@ export class UserComponent implements OnInit {
   delete = new EventEmitter<User>()
 
   constructor(
-    private ref: ElementRef
+    private ref: ElementRef,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    (this.ref.nativeElement as HTMLDivElement).addEventListener('click', () => {
-      console.log('event');
-    });
+
+  }
+
+  showDetails() {
+    this.router.navigate(['./users/', this.user.firstname]);
   }
 
 }
