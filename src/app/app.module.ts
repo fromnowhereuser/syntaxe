@@ -4,7 +4,6 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { FirstComponentComponent } from './components/first-component/first-component.component';
 import { UserComponent } from './components/user/user.component';
 import { UserService } from './services/user.service';
 import { GenericUserService } from './services/generic-user-service';
@@ -25,11 +24,11 @@ import { NavComponent } from './components/nav/nav.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { AuthDirective } from './services/auth.directive';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { PrivateModule } from './modules/private/private.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FirstComponentComponent,
     UserComponent,
     UserPipe,
     UserFilterPipe,

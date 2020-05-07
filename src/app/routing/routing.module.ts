@@ -43,6 +43,10 @@ const routes: Routes = [
     component: AuthComponent
   },
   {
+    path: 'private',
+    loadChildren:'../modules/private/private.module#PrivateModule'
+  },
+  {
     path: '**',
     component: ErrorComponent
   },
