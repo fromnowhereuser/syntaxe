@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation, ElementRef } from '@angular/core';
 import { User } from 'src/app/models/user';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -18,7 +18,8 @@ export class UserComponent implements OnInit {
 
   constructor(
     private ref: ElementRef,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -26,7 +27,7 @@ export class UserComponent implements OnInit {
   }
 
   showDetails() {
-    this.router.navigate(['./users/', this.user.firstname]);
+    this.router.navigate(['./', this.user.firstname], { relativeTo: this.activatedRoute });
   }
 
 }

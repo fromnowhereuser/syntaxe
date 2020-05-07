@@ -8,6 +8,7 @@ import { AuthGuard } from '../guards/auth.guard';
 import { AuthComponent } from '../components/auth/auth.component';
 import { UsersResolverService } from '../resolvers/users-resolver.service';
 import { UserDetailsComponent } from '../components/user-details/user-details.component';
+import { UserResolverService } from '../resolvers/user-resolver.service';
 
 
 const routes: Routes = [
@@ -32,7 +33,7 @@ const routes: Routes = [
         path: ':id',
         component: UserDetailsComponent,
         resolve: {
-          // user: UserResolverService
+          user: UserResolverService
         }
       }
     ],
