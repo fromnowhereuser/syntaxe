@@ -8,6 +8,7 @@ import { User } from 'src/app/models/user';
 })
 export class UsersComponent implements OnInit {
   public users = new Array<User>();
+  public userSelected!: User;
 
   constructor() { }
 
