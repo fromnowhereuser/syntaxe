@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { MonSuperComposantCoolComponent } from './components/mon-super-composant-cool/mon-super-composant-cool.component';
 import { UsersComponent } from './components/users/users.component';
 import { DoNothingDirective } from './directives/do-nothing.directive';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { DoNothingDirective } from './directives/do-nothing.directive';
     HeaderComponent,
     MonSuperComposantCoolComponent,
     UsersComponent,
-    DoNothingDirective
+    DoNothingDirective,
+    UserComponent
   ],
   imports: [
     BrowserModule

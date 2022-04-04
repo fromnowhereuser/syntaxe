@@ -1,0 +1,8 @@
+<div
+  style="border: 1px orange solid"
+  [ngClass]="{ isAdmin: user.isAdmin, isNotAdmin: !user.isAdmin }"
+>
+  <div>{{ user.firstname }}</div>
+  <div>{{ user.lastname }}</div>
+  <div><button (click)="user.toggleAdmin()">toggle admin</button></div>
+</div>
