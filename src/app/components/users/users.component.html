@@ -1,0 +1,44 @@
+<p>users works!</p>
+<div>
+  <div *ngIf="users.length > 0">nombre d'utilisateurs: {{ users.length }}</div>
+  <div>
+    <input
+      value="fndefault"
+      type="text"
+      name="firstname"
+      placeholder="firstname"
+      #fnInput
+    />
+    <input
+      value="lndefault"
+      type="text"
+      name="lastname"
+      placeholder="lastname"
+      #lnInput
+    />
+    <button (click)="handleUser(fnInput.value, lnInput.value)">add user</button>
+
+    <div [ngSwitch]="users.length">
+      <div *ngSwitchCase="0">no user :(</div>
+      <div *ngSwitchCase="1">only one user</div>
+      <div *ngSwitchDefault>lot of users !!</div>
+    </div>
+
+    <table>
+      <tr>
+        <th>firstname</th>
+        <th>lastname</th>
+        <th>actions</th>
+      </tr>
+
+      <tr
+        *ngFor="let user of users"
+        [ngClass]="{ isAdmin: user.isAdmin, isNotAdmin: !user.isAdmin }"
+      >
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.lastname }}</td>
+        <td><button (click)="user.toggleAdmin()">toggle admin</button></td>
+      </tr>
+    </table>
+  </div>
+</div>
