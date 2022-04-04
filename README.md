@@ -4,3 +4,5 @@ ng g c components/header
 ng g c components/MonSuperComposantCool
 
 ng g c components/Users
+
+ng g d directives/DoNothing
